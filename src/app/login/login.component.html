@@ -7,10 +7,24 @@
     <form [formGroup]="loginForm">
       <mat-form-field>
         <input matInput id="username" formControlName="username" placeholder="Username">
-          </mat-form-field>
-      
+
+        <mat-error *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+          You must fill out the username
+        </mat-error>
+
+        <mat-error *ngIf="loginForm.controls.username.errors?.minlength && loginForm.controls.username.touched">
+          Username must be at least 3 characters
+        </mat-error>
+  
+      </mat-form-field>
+
+         
         <mat-form-field>
           <input matInput id="password" type="password" placeholder="Password" formControlName="password">
+
+          <mat-error *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+            You must fill out the password
+          </mat-error>
         </mat-form-field>
       
       
@@ -19,4 +33,10 @@
   <mat-card-subtitle>
     <button type="button" mat-button>Login</button>
   </mat-card-subtitle>
+
+  <mat-card-subtitle>
+    <button routerLink = "register">Register</button>
+  </mat-card-subtitle>
+
+ 
 </mat-card>

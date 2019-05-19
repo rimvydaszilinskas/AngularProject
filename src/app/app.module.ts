@@ -12,11 +12,13 @@ import {
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
