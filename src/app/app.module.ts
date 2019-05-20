@@ -8,17 +8,25 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
-  MatFormField
+  MatFormField,
+  MatToolbarModule,
+  MatButtonModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { PortalComponent } from './portal/portal.component';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PortalComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,9 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
