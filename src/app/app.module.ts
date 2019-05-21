@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/register.component';
 import { PortalComponent } from './portal/portal.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreateCartComponent } from './create-cart/create-cart.component';
+import { DisplayCartComponent } from './display-cart/display-cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RegisterComponent,
     PortalComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CreateCartComponent,
+    DisplayCartComponent
   ],
   imports: [
     BrowserModule,
