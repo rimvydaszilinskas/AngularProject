@@ -11,6 +11,8 @@ import {
   MatFormField,
   MatToolbarModule,
   MatButtonModule,
+  MatSnackBar,
+  MatSnackBarModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
@@ -42,7 +44,8 @@ import { DisplayCartComponent } from './display-cart/display-cart.component';
     MatInputModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

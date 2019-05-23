@@ -1,26 +1,27 @@
 <br>
+<div class="loginContent">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card class="card">
+      <mat-card-header>
 
-<div class = "loginContent"> 
-<mat-card class="card">
-  <mat-card-header>
+      </mat-card-header>
 
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="loginForm">
-      <mat-form-field>
-        <input matInput id="username" formControlName="username" placeholder="Username">
+      <mat-card-content>
 
-        <mat-error *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
-          You must fill out the username
-        </mat-error>
+        <mat-form-field>
+          <input matInput id="username" formControlName="username" placeholder="Username">
 
-        <mat-error *ngIf="loginForm.controls.username.errors?.minlength && loginForm.controls.username.touched">
-          Username must be at least 3 characters
-        </mat-error>
-  
-      </mat-form-field>
+          <mat-error *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+            You must fill out the username
+          </mat-error>
 
-         
+          <mat-error *ngIf="loginForm.controls.username.errors?.minlength && loginForm.controls.username.touched">
+            Username must be at least 3 characters
+          </mat-error>
+
+        </mat-form-field>
+
+
         <mat-form-field>
           <input matInput id="password" type="password" placeholder="Password" formControlName="password">
 
@@ -28,17 +29,18 @@
             You must fill out the password
           </mat-error>
         </mat-form-field>
-      
-      
-    </form>
-  </mat-card-content>
-  <mat-card-subtitle>
-    <button type="button" mat-button>Login</button>
-  </mat-card-subtitle>
 
-  <mat-card-subtitle>
-    <button mat-button routerLink = "register">Register</button>
-  </mat-card-subtitle>
 
-</mat-card>
+
+      </mat-card-content>
+      <mat-card-subtitle>
+        <button mat-button id="submitLogin" type="submit" [disabled]="!loginForm.valid">Login</button>
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <button mat-button routerLink="../register">Register</button>
+      </mat-card-subtitle>
+
+    </mat-card>
+  </form>
 </div>
