@@ -19,8 +19,8 @@ export class TemporaryStorageService {
     return [
       {
         id: 'abc',
-        title: 'Friday shopping',
-        created: new Date(2019, 5, 2),
+        name: 'Friday shopping',
+        createdAt: new Date(2019, 5, 2),
         completed: false,
         items: [
           {
@@ -35,8 +35,8 @@ export class TemporaryStorageService {
       },
       {
         id: 'bcd',
-        title: 'Saturday shopping',
-        created: new Date(2019, 5, 2),
+        name: 'Saturday shopping',
+        createdAt: new Date(2019, 5, 2),
         completed: false,
         items: [
           {
@@ -54,7 +54,7 @@ export class TemporaryStorageService {
 
   addShoppingList(shoppingList: ShoppingList) {
     shoppingList.completed = false;
-    shoppingList.created = new Date();
+    shoppingList.createdAt = new Date();
     shoppingList.id = this.generateID(5);
 
     if (shoppingList.items !== undefined) {

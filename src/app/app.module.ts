@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CreateCartComponent } from './create-cart/create-cart.component';
 import { DisplayCartComponent } from './display-cart/display-cart.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DisplayCartComponent } from './display-cart/display-cart.component';
     MatToolbarModule,
     MatButtonModule,
     MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

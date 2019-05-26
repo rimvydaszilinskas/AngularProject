@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ShoppingList } from '../entities/shopping-list';
 import { TemporaryStorageService } from '../temporary-storage.service';
+import { CartApiService } from '../cart-api.service';
 
 @Component({
   selector: 'app-create-cart',
@@ -11,7 +12,9 @@ import { TemporaryStorageService } from '../temporary-storage.service';
 export class CreateCartComponent implements OnInit {
   createCart: FormGroup;
 
-  constructor(private fb: FormBuilder, private data: TemporaryStorageService) {}
+  constructor(private fb: FormBuilder,
+              private data: TemporaryStorageService,
+              private api: CartApiService) {}
 
   ngOnInit() {
     this.createCart = this.fb.group({
@@ -23,9 +26,15 @@ export class CreateCartComponent implements OnInit {
   saveCart() {
     const shoppingCart = this.createCart.value as ShoppingList;
 
-    if (shoppingCart.title.length > 3) {
+    if (shoppingCart.name.length > 3) {
       this.data.addShoppingList(shoppingCart);
     }
+
+    this.api.getAllShoppingList().subscribe( cart => {
+      console.log(cart);
+    }, error => {
+      console.log(error);
+    });
   }
 
   createNewItem() {
