@@ -47,4 +47,8 @@ export class CartApiService {
   updateItem(item: Item): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/item/update', item);
   }
+
+  createManyItems(items: Item[]): Observable<Item[]> {
+    return this.http.post<Item[]>(this.baseUrl + '/item/create/many', items);
+  }
 }
