@@ -16,6 +16,7 @@ export class DisplayAllCartsComponent implements OnInit {
 
   ngOnInit() {
     this.shoppingLists = this.data.shoppingLists;
+    console.log(this.shoppingLists)
   }
 
   handleShoppingListClicked(shoppingList: ShoppingList) : void {
