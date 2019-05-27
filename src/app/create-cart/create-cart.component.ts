@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ShoppingList } from '../entities/shopping-list';
 import { TemporaryStorageService } from '../service/temporary-storage.service';
 import { CartApiService } from '../cart-api.service';
+import { Item } from '../entities/item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-cart',
@@ -14,11 +16,12 @@ export class CreateCartComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private data: TemporaryStorageService,
-              private api: CartApiService) {}
+              private api: CartApiService,
+              private router: Router ) {}
 
   ngOnInit() {
     this.createCart = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(4)]],
+      name: ['', [Validators.required, Validators.minLength(4)]],
       items: this.fb.array([]),
     });
   }
@@ -26,19 +29,42 @@ export class CreateCartComponent implements OnInit {
   saveCart() {
     const shoppingCart = this.createCart.value as ShoppingList;
 
+    console.log(shoppingCart);
+
+    console.log(shoppingCart.items);
     if (shoppingCart.name.length > 3) {
-      this.data.addShoppingList(shoppingCart);
+      // this.data.addShoppingList(shoppingCart);
+
+      // send the data to the server
+      this.api.createShoppingList(shoppingCart).subscribe( cart => {
+
+        if (shoppingCart.items.length !== 0) {
+
+          shoppingCart.items.forEach(item => {
+            item.cartId = cart.id;
+          });
+
+          this.api.createManyItems(shoppingCart.items).subscribe( itemsFromApi => {
+            cart.items = itemsFromApi;
+
+            this.router.navigate([`/portal/display/${cart.id}`]);
+          }, error => {
+            console.log(error);
+          });
+        }
+      }, error => {
+        console.log(error);
+      });
     }
 
-    this.api.getAllShoppingList().subscribe( cart => {
-      console.log(cart);
-    }, error => {
-      console.log(error);
-    });
+    // this.api.getAllShoppingList().subscribe( cart => {
+    //   console.log(cart);
+    // }, error => {
+    //   console.log(error);
+    // });
   }
 
   createNewItem() {
-    console.log('trigger this')
     const item = this.fb.group({
       name: [''],
       quantity: [''],
@@ -47,6 +73,7 @@ export class CreateCartComponent implements OnInit {
     const items = this.createCart.controls.items as FormArray;
 
     items.push(item);
+
   }
 
 }

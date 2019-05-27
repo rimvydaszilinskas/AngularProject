@@ -12,11 +12,11 @@ export class CartApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllShoppingList(): Observable<ShoppingList> {
-    return this.http.get<ShoppingList>(this.baseUrl + '/cart/all');
+  getAllShoppingList(): Observable<ShoppingList[]> {
+    return this.http.get<ShoppingList[]>(this.baseUrl + '/cart/all');
   }
 
-  getShoppingList(id: number): Observable<ShoppingList> {
+  getShoppingList(id: string): Observable<ShoppingList> {
     return this.http.get<ShoppingList>(this.baseUrl + `/cart/get/${id}`);
   }
 
@@ -25,11 +25,11 @@ export class CartApiService {
   }
 
   updateShoppingList(shoppingList: ShoppingList): Observable<any> {
-    return this.http.post<null>(this.baseUrl + '/cart/update', shoppingList);
+    return this.http.post<any>(this.baseUrl + '/cart/update', shoppingList);
   }
 
-  deleteShoppingList(shoppingList: ShoppingList): Observable<any> {
-    return this.http.post<null>(this.baseUrl + '/cart/delete', { id: shoppingList.id });
+  deleteShoppingList(id: string): Observable<any> {
+    return this.http.post<null>(this.baseUrl + '/cart/delete', { id: id });
   }
 
   getItem(id: number): Observable<Item> {

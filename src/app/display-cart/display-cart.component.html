@@ -1,6 +1,16 @@
-<h3>{{shoppingList.title}}</h3>
+<div *ngIf="shoppingList">
+  <h3>{{shoppingList.name}} {{ shoppingList.completed ? "- Completed": ""}}</h3>
 
-<ul>
-  <li *ngFor="let item of shoppingList.items">{{item.name}} - {{item.quantity}}</li>
-</ul>
+  <ul>
+    <li *ngFor="let item of shoppingList.items">{{item.name}} - {{item.quantity}}</li>
+  </ul>
 
+  <button type="button" mat-raised-button color="secondary" (click)="changeStatus()">Mark as {{shoppingList.completed ? "undone" : "done"}}</button>
+  <button type="button" mat-raised-button color="warn" (click)="delete()">Delete</button>
+</div>
+<div *ngIf="loading">
+  Loading
+</div>
+<div *ngIf="error">
+  Error occured
+</div>

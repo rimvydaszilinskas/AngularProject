@@ -21,7 +21,8 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent},
     { path: 'contact', component: ContactComponent},
   ]},
-  { path: 'portal', component: PortalComponent,canActivate: [AuthGuard], children: [
+  // { path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
+  { path: 'portal', component: PortalComponent, children: [
     { path: 'new', component: CreateCartComponent },
     { path: 'display-all', component: DisplayAllCartsComponent},
     { path: 'display/:id', component: DisplayCartComponent},

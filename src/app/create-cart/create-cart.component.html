@@ -1,12 +1,12 @@
 <form [formGroup]="createCart" (ngSubmit)="saveCart()">
   <div>
     <mat-form-field>
-      <input matInput placeholder="Cart name" formControlName="title">
-      <mat-error *ngIf="createCart.controls.title.errors?.required && createCart.controls.title.touched">
+      <input matInput placeholder="Cart name" formControlName="name">
+      <mat-error *ngIf="createCart.controls.name.errors?.required && createCart.controls.name.touched">
           You must fill out the username
         </mat-error>
 
-        <mat-error *ngIf="createCart.controls.title.errors?.minlength && createCart.controls.title.touched">
+        <mat-error *ngIf="createCart.controls.name.errors?.minlength && createCart.controls.name.touched">
           Username must be at least 3 characters
         </mat-error>
     </mat-form-field>
