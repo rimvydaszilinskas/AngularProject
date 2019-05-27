@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TemporaryStorageService } from '../temporary-storage.service';
+import { TemporaryStorageService } from '../service/temporary-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from '../entities/item';
 import { ShoppingList } from '../entities/shopping-list';
@@ -12,14 +12,14 @@ import { ShoppingList } from '../entities/shopping-list';
 export class DisplayCartComponent implements OnInit {
   shoppingList: ShoppingList;
 
-  constructor(private tempData: TemporaryStorageService, private route: ActivatedRoute) { }
-
+  constructor(private tempData: TemporaryStorageService) { }
+  //, private route: ActivatedRoute
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    //const id = this.route.snapshot.paramMap.get('id');
 
-    this.shoppingList = this.tempData.findShoppingList(id);
+    //this.shoppingList = this.tempData.findShoppingList(id);
 
-    console.log(this.shoppingList);
+    //console.log(this.shoppingList);
   }
 
 }

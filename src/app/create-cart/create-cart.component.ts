@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ShoppingList } from '../entities/shopping-list';
-import { TemporaryStorageService } from '../temporary-storage.service';
+import { TemporaryStorageService } from '../service/temporary-storage.service';
 import { CartApiService } from '../cart-api.service';
 
 @Component({

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       console.log("First");
       this.authService.login().subscribe(result => {
         console.log("Third");
-        this.router.navigate(['portal']);  
+        this.router.navigate(['portal/display-all']);  
       });
   
       console.log("Second");
@@ -44,9 +44,10 @@ export class LoginComponent implements OnInit {
 
     else {
       // Show error message or something else.
-    }
-      
-    
+      this.snackBar.open('Error, wrong username', 'Close', {
+        duration: 2000,
+    });
+  
   }
 }
- 
+}

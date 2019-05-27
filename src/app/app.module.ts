@@ -23,6 +23,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CreateCartComponent } from './create-cart/create-cart.component';
 import { DisplayCartComponent } from './display-cart/display-cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DisplayAllCartsComponent } from './display-all-carts/display-all-carts.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PageNotFoundComponent,
     CreateCartComponent,
-    DisplayCartComponent
+    DisplayCartComponent,
+    DisplayAllCartsComponent,
+    AboutComponent,
+    ContactComponent,
+    ShoppingListComponent,
   ],
   imports: [
     BrowserModule,

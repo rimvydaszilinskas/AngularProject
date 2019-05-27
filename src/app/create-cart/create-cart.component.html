@@ -2,6 +2,13 @@
   <div>
     <mat-form-field>
       <input matInput placeholder="Cart name" formControlName="title">
+      <mat-error *ngIf="createCart.controls.title.errors?.required && createCart.controls.title.touched">
+          You must fill out the username
+        </mat-error>
+
+        <mat-error *ngIf="createCart.controls.title.errors?.minlength && createCart.controls.title.touched">
+          Username must be at least 3 characters
+        </mat-error>
     </mat-form-field>
   </div>
   <div>

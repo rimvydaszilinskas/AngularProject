@@ -1,7 +1,11 @@
+<br>
+
+<div class ="registerComponent">
 <mat-card class="example-card">
-    <mat-card-header>
-  
-    </mat-card-header>
+    <mat-card-title class="title">
+      Register
+    </mat-card-title>  
+
     <mat-card-content>
       <form [formGroup]="registerForm">
         <mat-form-field>
@@ -12,6 +16,7 @@
           </mat-error>
         </mat-form-field>
         
+        <br>
 
          <mat-form-field>
                 <input matInput id="lastname" formControlName="lastname" placeholder="Lastname">
@@ -21,21 +26,22 @@
                 </mat-error>
 
          </mat-form-field>
+
+
+        <br>
          
           <mat-form-field>
 
-
-          
           <input matInput id="username" formControlName="username" placeholder="Username">
   
           <mat-error *ngIf="registerForm.controls.username.errors?.required && registerForm.controls.username.touched">
             You must enter a username
           </mat-error>
   
-         
-    
+        
         </mat-form-field>
   
+        <br>
            
           <mat-form-field>
             <input matInput id="password" type="password" placeholder="Password" formControlName="password">
@@ -49,6 +55,7 @@
                   </mat-error>
           </mat-form-field>
         
+          <br>
         
       </form>
     </mat-card-content>
@@ -57,9 +64,10 @@
     </mat-card-subtitle>
   
     <mat-card-subtitle>
-      <button routerLink = "">Cancel</button>
+      <button type="button" mat-button routerLink = "">Cancel</button>
     </mat-card-subtitle>
   
    
   </mat-card>
+</div>
   

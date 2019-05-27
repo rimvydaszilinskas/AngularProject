@@ -1,0 +1,17 @@
+  <!-- <div>
+    <mat-form-field >
+      <input matInput placeholder="Search for shopping list" value="" [(ngModel)]="userSearch">
+    </mat-form-field> 
+  </div> -->
+  
+  <div *ngFor="let shoppingList of shoppingLists">
+    
+    <app-shopping-list  
+      [shoppingListInput] = "shoppingList"
+      (shoppingListClicked) = "handleShoppingListClicked($event)"
+    ></app-shopping-list> 
+
+  </div>  
+  
+
+  

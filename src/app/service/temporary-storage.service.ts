@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ShoppingList } from './entities/shopping-list';
+import { ShoppingList } from '../entities/shopping-list';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class TemporaryStorageService {
         id: 'abc',
         name: 'Friday shopping',
         createdAt: new Date(2019, 5, 2),
-        completed: false,
+        completed: true,
         items: [
           {
             name: 'Guiness',
