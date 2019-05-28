@@ -27,6 +27,7 @@ import { DisplayAllCartsComponent } from './display-all-carts/display-all-carts.
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { CartFilterPipe } from './cart-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     AboutComponent,
     ContactComponent,
     ShoppingListComponent,
+    CartFilterPipe,
   ],
   imports: [
     BrowserModule,

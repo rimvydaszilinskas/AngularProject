@@ -1,10 +1,10 @@
-  <!-- <div>
+  <div>
     <mat-form-field >
-      <input matInput placeholder="Search for shopping list" value="" [(ngModel)]="userSearch">
+      <input matInput placeholder="Search for shopping list" [(ngModel)]="userSearch">
     </mat-form-field> 
-  </div> -->
+  </div>
   
-  <div *ngFor="let shoppingList of shoppingLists">
+  <div *ngFor="let shoppingList of ( shoppingLists | cartFilter : userSearch )">
     
     <app-shopping-list  
       [shoppingListInput] = "shoppingList"
