@@ -5,6 +5,7 @@ import { TemporaryStorageService } from '../service/temporary-storage.service';
 import { CartApiService } from '../cart-api.service';
 import { Item } from '../entities/item';
 import { Router } from '@angular/router';
+import { CartActions } from '../cart.actions';
 
 @Component({
   selector: 'app-create-cart',
@@ -15,9 +16,9 @@ export class CreateCartComponent implements OnInit {
   createCart: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private data: TemporaryStorageService,
               private api: CartApiService,
-              private router: Router ) {}
+              private router: Router,
+              private cartActions: CartActions ) {}
 
   ngOnInit() {
     this.createCart = this.fb.group({
@@ -47,6 +48,7 @@ export class CreateCartComponent implements OnInit {
           this.api.createManyItems(shoppingCart.items).subscribe( itemsFromApi => {
             cart.items = itemsFromApi;
 
+            this.cartActions.createCart(cart);
             this.router.navigate([`/portal/display/${cart.id}`]);
           }, error => {
             console.log(error);

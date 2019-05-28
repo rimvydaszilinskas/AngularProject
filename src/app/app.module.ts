@@ -28,6 +28,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { CartFilterPipe } from './cart-filter.pipe';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
+import { AppState, rootReducer } from './store';
 
 @NgModule({
   declarations: [
@@ -57,9 +60,19 @@ import { CartFilterPipe } from './cart-filter.pipe';
     MatToolbarModule,
     MatButtonModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    NgReduxModule,
+    NgReduxRouterModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private ngRedux: NgRedux<AppState>,
+              private devTool: DevToolsExtension,
+              private ngReduxRouter: NgReduxRouter) {
+                // this.ngRedux.configureStore()
+                this.ngRedux.configureStore(rootReducer, {}, []);
+                this.ngReduxRouter.initialize();
+              }
+}

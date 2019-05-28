@@ -5,6 +5,7 @@ import { Item } from '../entities/item';
 import { ShoppingList } from '../entities/shopping-list';
 import { CartApiService } from '../cart-api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CartActions } from '../cart.actions';
 
 @Component({
   selector: 'app-display-cart',
@@ -20,7 +21,8 @@ export class DisplayCartComponent implements OnInit {
   constructor(private apiService: CartApiService,
               private route: ActivatedRoute,
               private router: Router,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private cartActions: CartActions) { }
 
   ngOnInit() {
     this.createItem = this.fb.group({
@@ -78,10 +80,12 @@ export class DisplayCartComponent implements OnInit {
     if (result) {
       this.apiService.deleteShoppingList(this.shoppingList.id).subscribe(response => {
         alert('Cart deleted!');
+        this.cartActions.deleteCart(this.shoppingList.id);
         this.router.navigate(['/portal/display-all']);
       }, error => {
         if (error.status === 200) {
           alert('Cart deleted!');
+          this.cartActions.deleteCart(this.shoppingList.id);
           this.router.navigate(['/portal/display-all']);
         } else {
           this.error = true;
