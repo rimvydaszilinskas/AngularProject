@@ -5,6 +5,15 @@
     <li *ngFor="let item of shoppingList.items">{{item.name}} - {{item.quantity}}</li>
   </ul>
 
+  <form [formGroup]="createItem" (ngSubmit)="addItem()">
+    <mat-form-field>
+      <input matInput placeholder="Item name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Ammount" type="number" min="0" formControlName="quantity">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Add item</button>
+  </form>
   <button type="button" mat-raised-button color="secondary" (click)="changeStatus()">Mark as {{shoppingList.completed ? "undone" : "done"}}</button>
   <button type="button" mat-raised-button color="warn" (click)="delete()">Delete</button>
 </div>

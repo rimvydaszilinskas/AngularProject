@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../entities/item';
 import { ShoppingList } from '../entities/shopping-list';
 import { CartApiService } from '../cart-api.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-display-cart',
@@ -14,12 +15,19 @@ export class DisplayCartComponent implements OnInit {
   shoppingList: ShoppingList;
   loading: boolean;
   error: boolean;
+  createItem: FormGroup;
 
   constructor(private apiService: CartApiService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.createItem = this.fb.group({
+      name: ['', [ Validators.required, Validators.minLength(2)]],
+      quantity: ['']
+    });
+
     const id: string = this.route.snapshot.paramMap.get('id');
 
     this.loading = true;
@@ -51,7 +59,7 @@ export class DisplayCartComponent implements OnInit {
       // with a status 200 Angular understands that as an error
       // FUCK ANGULAR
       // -- Rim
-      if(error.status === 200) {
+      if (error.status === 200) {
         this.shoppingList = cart;
       } else {
         this.error = true;
@@ -67,7 +75,7 @@ export class DisplayCartComponent implements OnInit {
      * an error...
      * -- Rim
      */
-    if(result) {
+    if (result) {
       this.apiService.deleteShoppingList(this.shoppingList.id).subscribe(response => {
         alert('Cart deleted!');
         this.router.navigate(['/portal/display-all']);
@@ -78,6 +86,34 @@ export class DisplayCartComponent implements OnInit {
         } else {
           this.error = true;
         }
+      });
+    }
+  }
+
+  addItem() {
+    const item = this.createItem.value;
+
+    if (item.name.length !== 0) {
+      let itemToPush;
+
+      if (item.quantity === 0 || item.quantity === '') {
+        itemToPush = {
+          name: item.name,
+          quantity: item.quantity,
+          cartId: this.shoppingList.id
+        };
+      } else {
+        itemToPush = {
+          name: item.name,
+          quantity: item.quantity,
+          cartId: this.shoppingList.id
+        };
+      }
+
+      this.apiService.createItem(itemToPush).subscribe(response => {
+        this.shoppingList.items.push(response);
+      }, error => {
+        this.error = true;
       });
     }
   }
