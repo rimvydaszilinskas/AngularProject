@@ -25,7 +25,6 @@ import { DisplayCartComponent } from './display-cart/display-cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DisplayAllCartsComponent } from './display-all-carts/display-all-carts.component';
 import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { CartFilterPipe } from './cart-filter.pipe';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
@@ -44,7 +43,6 @@ import { AppState, rootReducer } from './store';
     DisplayCartComponent,
     DisplayAllCartsComponent,
     AboutComponent,
-    ContactComponent,
     ShoppingListComponent,
     CartFilterPipe,
   ],

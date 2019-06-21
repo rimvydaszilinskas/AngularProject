@@ -10,7 +10,6 @@ import { DisplayCartComponent } from './display-cart/display-cart.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DisplayAllCartsComponent } from './display-all-carts/display-all-carts.component';
 import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home/login', pathMatch: 'full' }, // if baseUrl => go to login} 
@@ -19,7 +18,6 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'about', component: AboutComponent},
-    { path: 'contact', component: ContactComponent},
   ]},
   // { path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
   { path: 'portal', component: PortalComponent, children: [

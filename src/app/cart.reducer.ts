@@ -20,8 +20,8 @@ export function cartReducer(state: CartState = INITIAL_STATE, action: any) {
             return tassign(state, { carts: [...state.carts, action.payload]});
         case CartActions.DELETE_CART:
             const filteredCarts = state.carts.filter(element => element.id !== action.payload);
-
-            return tassign(state, { carts: filteredCarts});
+            console.log(filteredCarts)
+            return tassign(state, { carts: filteredCarts });
         default:
             return state;
     }
