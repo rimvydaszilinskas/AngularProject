@@ -3,18 +3,21 @@
     <mat-form-field>
       <input matInput placeholder="Cart name" formControlName="name">
       <mat-error *ngIf="createCart.controls.name.errors?.required && createCart.controls.name.touched">
-          You must fill out the username
+          You must fill out the name 
         </mat-error>
 
         <mat-error *ngIf="createCart.controls.name.errors?.minlength && createCart.controls.name.touched">
-          Username must be at least 3 characters
+          The name must be at least 3 characters
         </mat-error>
     </mat-form-field>
   </div>
+  <br> 
+
   <div>
     <button type="button" mat-raised-button color="secondary" (click)="createNewItem()">Add cart item</button>
   </div>
 
+  <br>
   <div formArrayName="items">
     <div *ngFor="let itemControl of createCart.controls.items.controls; let i = index">
       <div [formGroupName]="i">
