@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartActions } from '../cart.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cartActions: CartActions, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.cartActions.login(false);
+    this.router.navigate(['home/login']);  
   }
 
 }

@@ -50,4 +50,11 @@ export class CartActions {
             payload: id
         });
     }
+
+    login(status: boolean) {
+        this.ngRedux.dispatch({
+            type: CartActions.LOG_IN,
+            payload: status
+        });
+    }
 }

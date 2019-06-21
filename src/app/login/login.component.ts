@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material';
+import { CartActions } from '../cart.actions';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar,
-     private router: Router) { }
+     private router: Router, private cartActions: CartActions) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       //log in as admin
       console.log("First");
       this.authService.login().subscribe(result => {
+        this.cartActions.login(true);
         console.log("Third");
         this.router.navigate(['portal/display-all']);  
       });

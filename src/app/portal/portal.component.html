@@ -1,14 +1,13 @@
 <mat-toolbar color="primary">
   <span >Take my money</span>
   <!-- <button mat-button *ngIf="!authService.isLoggedIn" routerLink="portal/find-quiz">Find a quiz</button> -->
-  <button mat-button routerLink="find-quiz">Find</button>
   <button mat-button routerLink="new">Create</button>
   <button mat-button routerLink="display-all">Show all</button>
   
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
 
-  <button mat-button routerLink="/">Log out</button>
+  <button mat-button (click)=>Log out</button>
 </mat-toolbar>
 
 
