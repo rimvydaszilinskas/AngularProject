@@ -19,8 +19,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'about', component: AboutComponent},
   ]},
-  // { path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
-  { path: 'portal', component: PortalComponent, children: [
+  { path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
     { path: 'new', component: CreateCartComponent },
     { path: 'display-all', component: DisplayAllCartsComponent},
     { path: 'display/:id', component: DisplayCartComponent},
