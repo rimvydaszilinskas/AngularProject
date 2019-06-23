@@ -1,16 +1,20 @@
+<div *ngIf="isLoading" style="font-size: 30px">
+  Please wait...
+</div>
+  
   <div>
     <mat-form-field >
       <input matInput placeholder="Search for shopping list" [(ngModel)]="userSearch">
     </mat-form-field> 
   </div>
   
-  <div *ngFor="let shoppingList of ( shoppingLists | cartFilter : userSearch )">
-    
-    <app-shopping-list  
-      [shoppingListInput] = "shoppingList"
-      (shoppingListClicked) = "handleShoppingListClicked($event)"
-    ></app-shopping-list> 
-
+  <div *ngFor="let shoppingList of ( shoppingLists | cartFilter : userSearch )" class="float-left">
+      <app-shopping-list  
+        [shoppingListInput] = "shoppingList"
+        (shoppingListClicked) = "handleShoppingListClicked($event)"
+      ></app-shopping-list> 
+      <br>
+      <br>
   </div>  
   
 
